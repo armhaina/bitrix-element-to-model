@@ -44,12 +44,20 @@ readonly class Clr
             $list[$field] = self::fields(fields: $property);
         }
 
-        foreach ($fields as $key => $value) {
-            if (str_starts_with($key, 'PROPERTY_') && str_ends_with($key, '_VALUE')) {
-                $propertiesSlc[substr(string: $key, offset: 9, length: -6)] = $value;
-            }
-        }
+        return $list;
 
-        return array_intersect_key($list, $propertiesSlc);
+        // TODO: Проблема логики bitrix.
+        // Если есть PROPERTY_ как множественное свойство,
+        // то при GetList Bitrix дублирует элемент в выборке (влияет на пагинацию).
+        // Решение 1: в arSelectFields для GetList передавать ['*'], это соберет все дефолтные поля,
+        // все PROPERTY_ получаем отдельным запросом и НЕ соотносим из с select полей из GetFields
+        // Решение 2: в настройках ИБ изменить место хранения свойств на отдельную таблицу.
+        //foreach ($fields as $key => $value) {
+        //    if (str_starts_with($key, 'PROPERTY_') && str_ends_with($key, '_VALUE')) {
+        //        $propertiesSlc[substr(string: $key, offset: 9, length: -6)] = $value;
+        //    }
+        //}
+
+        //return array_intersect_key($list, $propertiesSlc);
     }
 }
