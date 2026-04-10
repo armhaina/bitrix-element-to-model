@@ -1,7 +1,7 @@
 {
   "name": "armhaina/bitrix-element-hydrator",
   "type": "library",
-  "description": "Transform the Bitrix information block element into an entity",
+  "description": "Hydrator of the Bitrix element in the entity",
   "keywords": [
     "bitrix",
     "element",
