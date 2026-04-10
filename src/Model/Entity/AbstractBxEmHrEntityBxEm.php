@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace BitrixElementHydrator\Model\Entity;
 
-use BitrixElementHydrator\Contract\HydratorEntityInterface;
-use BitrixElementHydrator\Model\Entity\Attachment\HydratorFileAttachment;
-use BitrixElementHydrator\Model\Entity\Attachment\HydratorSectionAttachment;
+use BitrixElementHydrator\Contract\BxEmHydratorEntityInterface;
+use BitrixElementHydrator\Model\Entity\Attachment\BxEmBxEmHydratorFileAttachment;
+use BitrixElementHydrator\Model\Entity\Attachment\BxEmBxEmHydratorSectionAttachment;
 
-abstract class AbstractHydratorEntity implements HydratorEntityInterface
+abstract class AbstractBxEmHrEntityBxEm implements BxEmHydratorEntityInterface
 {
     protected int $id;
     protected ?string $name = null;
@@ -18,12 +18,12 @@ abstract class AbstractHydratorEntity implements HydratorEntityInterface
     protected ?string $dateCreate = null;
     protected ?int $dateCreateUnix = null;
     protected ?int $iblockId = null;
-    protected ?HydratorSectionAttachment $iblockSectionId = null;
+    protected ?BxEmBxEmHydratorSectionAttachment $iblockSectionId = null;
     protected ?bool $active = null;
-    protected ?HydratorFileAttachment $previewPicture = null;
+    protected ?BxEmBxEmHydratorFileAttachment $previewPicture = null;
     protected ?string $previewText = null;
     protected ?string $previewTextType = null;
-    protected ?HydratorFileAttachment $detailPicture = null;
+    protected ?BxEmBxEmHydratorFileAttachment $detailPicture = null;
     protected ?string $detailText = null;
     protected ?string $detailTextType = null;
     protected ?string $searchableContent = null;
@@ -152,12 +152,12 @@ abstract class AbstractHydratorEntity implements HydratorEntityInterface
         return $this;
     }
 
-    public function getIblockSectionId(): ?HydratorSectionAttachment
+    public function getIblockSectionId(): ?BxEmBxEmHydratorSectionAttachment
     {
         return $this->iblockSectionId;
     }
 
-    public function setIblockSectionId(HydratorSectionAttachment $iblockSectionId): self
+    public function setIblockSectionId(BxEmBxEmHydratorSectionAttachment $iblockSectionId): self
     {
         $this->iblockSectionId = $iblockSectionId;
 
@@ -176,12 +176,12 @@ abstract class AbstractHydratorEntity implements HydratorEntityInterface
         return $this;
     }
 
-    public function getPreviewPicture(): ?HydratorFileAttachment
+    public function getPreviewPicture(): ?BxEmBxEmHydratorFileAttachment
     {
         return $this->previewPicture;
     }
 
-    public function setPreviewPicture(HydratorFileAttachment $previewPicture): self
+    public function setPreviewPicture(BxEmBxEmHydratorFileAttachment $previewPicture): self
     {
         $this->previewPicture = $previewPicture;
 
@@ -212,12 +212,12 @@ abstract class AbstractHydratorEntity implements HydratorEntityInterface
         return $this;
     }
 
-    public function getDetailPicture(): ?HydratorFileAttachment
+    public function getDetailPicture(): ?BxEmBxEmHydratorFileAttachment
     {
         return $this->detailPicture;
     }
 
-    public function setDetailPicture(HydratorFileAttachment $detailPicture): self
+    public function setDetailPicture(BxEmBxEmHydratorFileAttachment $detailPicture): self
     {
         $this->detailPicture = $detailPicture;
 

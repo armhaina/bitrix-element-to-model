@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace BitrixElementHydrator\Model\Entity\Property;
 
-use BitrixElementHydrator\Contract\HydratorEntityPropertyInterface;
+use BitrixElementHydrator\Contract\BxEmHydratorEntityPropertyInterface;
 
-abstract class AbstractHydratorProperty implements HydratorEntityPropertyInterface
+abstract class AbstractBxEmBxEmHydratorProperty implements BxEmHydratorEntityPropertyInterface
 {
     protected int $id;
     protected string $timestampX;

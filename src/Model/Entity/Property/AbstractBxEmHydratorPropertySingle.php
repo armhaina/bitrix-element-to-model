@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace BitrixElementHydrator\Model\Entity\Property;
 
-abstract class AbstractHydratorPropertySingle extends AbstractHydratorProperty
+abstract class AbstractBxEmHydratorPropertySingle extends AbstractBxEmBxEmHydratorProperty
 {
     protected int $propertyValueId;
 

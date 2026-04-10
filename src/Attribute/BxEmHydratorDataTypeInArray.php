@@ -2,13 +2,13 @@
 
 namespace BitrixElementHydrator\Attribute;
 
-use BitrixElementHydrator\Exception\HydratorDataTypeUnauthorizedException;
+use BitrixElementHydrator\Exception\BxEmHydratorDataTypeUnauthorizedException;
 
 /**
  * Атрибут для указания типов данных, которые содержатся в массиве
  */
 #[\Attribute]
-readonly class HydratorDataTypeInArray
+readonly class BxEmHydratorDataTypeInArray
 {
     private const array ACCEPTABLE_TYPES = ['string', 'integer', 'float'];
 
@@ -22,7 +22,7 @@ readonly class HydratorDataTypeInArray
             return;
         }
 
-        throw new HydratorDataTypeUnauthorizedException(type: $typeOrClassName, acceptableTypes: self::ACCEPTABLE_TYPES);
+        throw new BxEmHydratorDataTypeUnauthorizedException(type: $typeOrClassName, acceptableTypes: self::ACCEPTABLE_TYPES);
     }
 
     public function getTypeOrClassName(): string

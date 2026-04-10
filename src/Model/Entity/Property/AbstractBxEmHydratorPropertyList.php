@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace BitrixElementHydrator\Model\Entity\Property;
 
-use BitrixElementHydrator\Attribute\HydratorDataTypeInArray;
+use BitrixElementHydrator\Attribute\BxEmHydratorDataTypeInArray;
 
-abstract class AbstractHydratorPropertyList extends AbstractHydratorProperty
+abstract class AbstractBxEmHydratorPropertyList extends AbstractBxEmBxEmHydratorProperty
 {
-    #[HydratorDataTypeInArray(typeOrClassName: 'integer')]
+    #[BxEmHydratorDataTypeInArray(typeOrClassName: 'integer')]
     protected array $propertyValueId;
 
     public function getPropertyValueId(): array

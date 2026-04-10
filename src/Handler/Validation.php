@@ -4,19 +4,19 @@ declare(strict_types=1);
 
 namespace BitrixElementHydrator\Handler;
 
-use BitrixElementHydrator\Contract\HydratorRuleInterface;
-use BitrixElementHydrator\Exception\HydratorValueNotRuleException;
+use BitrixElementHydrator\Contract\BxEmHydratorRuleInterface;
+use BitrixElementHydrator\Exception\BxEmHydratorValueNotRuleException;
 
 readonly class Validation
 {
     public static function rules(array $rules): void
     {
         foreach ($rules as $rule) {
-            if ($rule instanceof HydratorRuleInterface) {
+            if ($rule instanceof BxEmHydratorRuleInterface) {
                 continue;
             }
 
-            throw new HydratorValueNotRuleException(value: $rule);
+            throw new BxEmHydratorValueNotRuleException(value: $rule);
         }
     }
 }

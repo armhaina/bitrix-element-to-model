@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace BitrixElementHydrator\Model;
 
-class Configure
+class BxEmHydratorConfigure
 {
     private string $field;
     private string|array $value;

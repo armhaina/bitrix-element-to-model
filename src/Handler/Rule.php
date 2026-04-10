@@ -4,18 +4,18 @@ declare(strict_types=1);
 
 namespace BitrixElementHydrator\Handler;
 
-use BitrixElementHydrator\Model\Configure;
-use BitrixElementHydrator\Model\Rule\HydratorDataRelatedRule;
+use BitrixElementHydrator\Model\BxEmHydratorConfigure;
+use BitrixElementHydrator\Model\Rule\BxEmBxEmHydratorDataRelatedRule;
 
 readonly class Rule
 {
     /**
      * @throws \ReflectionException
      */
-    public static function dataRelated(Configure $configure): bool
+    public static function dataRelated(BxEmHydratorConfigure $configure): bool
     {
         foreach ($configure->getRules() as $rule) {
-            if (!($rule instanceof HydratorDataRelatedRule)) {
+            if (!($rule instanceof BxEmBxEmHydratorDataRelatedRule)) {
                 continue;
             }
 

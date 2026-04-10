@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace BitrixElementHydrator\Model\Rule;
 
-use BitrixElementHydrator\Contract\HydratorRuleInterface;
-use BitrixElementHydrator\Exception\HydratorDataTypeNotStringException;
+use BitrixElementHydrator\Contract\BxEmHydratorRuleInterface;
+use BitrixElementHydrator\Exception\BxEmHydratorDataTypeNotStringException;
 
-readonly class HydratorDataRelatedRule implements HydratorRuleInterface
+readonly class BxEmBxEmHydratorDataRelatedRule implements BxEmHydratorRuleInterface
 {
     public function __construct(private array $fields)
     {
@@ -26,7 +26,7 @@ readonly class HydratorDataRelatedRule implements HydratorRuleInterface
                 continue;
             }
 
-            throw new HydratorDataTypeNotStringException(value: $field);
+            throw new BxEmHydratorDataTypeNotStringException(value: $field);
         }
     }
 }

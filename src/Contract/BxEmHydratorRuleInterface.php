@@ -2,4 +2,4 @@
 
 namespace BitrixElementHydrator\Contract;
 
-interface HydratorEntityPropertyInterface {}
+interface BxEmHydratorRuleInterface {}

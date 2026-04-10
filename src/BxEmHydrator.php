@@ -4,24 +4,24 @@ declare(strict_types=1);
 
 namespace BitrixElementHydrator;
 
-use BitrixElementHydrator\Attribute\HydratorDataTypeInArray;
-use BitrixElementHydrator\Contract\HydratorEntityAttachmentInterface;
-use BitrixElementHydrator\Contract\HydratorEntityInterface;
-use BitrixElementHydrator\Contract\HydratorEntityPropertyInterface;
-use BitrixElementHydrator\Exception\HydratorAttributeNotFoundException;
+use BitrixElementHydrator\Attribute\BxEmHydratorDataTypeInArray;
+use BitrixElementHydrator\Contract\BxEmHydratorEntityAttachmentInterface;
+use BitrixElementHydrator\Contract\BxEmHydratorEntityInterface;
+use BitrixElementHydrator\Contract\BxEmHydratorEntityPropertyInterface;
+use BitrixElementHydrator\Exception\BxEmHydratorAttributeNotFoundException;
 use BitrixElementHydrator\Handler\Attachment;
 use BitrixElementHydrator\Handler\Clr;
 use BitrixElementHydrator\Handler\Rfl;
 use BitrixElementHydrator\Handler\Rule;
 use BitrixElementHydrator\Handler\Str;
 use BitrixElementHydrator\Handler\Validation;
-use BitrixElementHydrator\Model\Configure;
-use BitrixElementHydrator\Model\Entity\Attachment\HydratorFileAttachment;
-use BitrixElementHydrator\Model\Entity\Attachment\HydratorSectionAttachment;
+use BitrixElementHydrator\Model\BxEmHydratorConfigure;
+use BitrixElementHydrator\Model\Entity\Attachment\BxEmBxEmHydratorFileAttachment;
+use BitrixElementHydrator\Model\Entity\Attachment\BxEmBxEmHydratorSectionAttachment;
 use DateMalformedStringException;
 use ReflectionException;
 
-class BitrixElementHydrator
+class BxEmHydrator
 {
     /**
      * @throws ReflectionException
@@ -67,7 +67,7 @@ class BitrixElementHydrator
                 continue;
             }
 
-            $configure = new Configure()
+            $configure = new BxEmHydratorConfigure()
                 ->setValue(value: $value)
                 ->setField(field: $field)
                 ->setRules(rules: $rules)
@@ -101,17 +101,17 @@ class BitrixElementHydrator
     /**
      * @throws ReflectionException
      */
-    private static function configure(Configure $configure, object $model): Configure
+    private static function configure(BxEmHydratorConfigure $configure, object $model): BxEmHydratorConfigure
     {
         if ($configure->getDataType() === 'array') {
             $attribute = Rfl::attribute(
-                attributeName: HydratorDataTypeInArray::class,
+                attributeName: BxEmHydratorDataTypeInArray::class,
                 className: $model::class,
                 property: Str::snakeToCamelCase(string: $configure->getField())
             );
 
             if (!$attribute) {
-                throw new HydratorAttributeNotFoundException(attribute: HydratorDataTypeInArray::class);
+                throw new BxEmHydratorAttributeNotFoundException(attribute: BxEmHydratorDataTypeInArray::class);
             }
 
             $configure->setDataTypeInArray(dataTypeInArray: $attribute->getTypeOrClassName());
@@ -123,18 +123,18 @@ class BitrixElementHydrator
                     ->setClassName(className: $configure->getDataType())
                     ->setDataType(dataType: 'enum');
             }
-            if (is_subclass_of(object_or_class: $configure->getDataType(), class: HydratorEntityInterface::class)) {
+            if (is_subclass_of(object_or_class: $configure->getDataType(), class: BxEmHydratorEntityInterface::class)) {
                 $configure
                     ->setClassName(className: $configure->getDataType())
                     ->setDataType(dataType: 'entity');
             }
-            if (is_subclass_of(object_or_class: $configure->getDataType(), class: HydratorEntityPropertyInterface::class)) {
+            if (is_subclass_of(object_or_class: $configure->getDataType(), class: BxEmHydratorEntityPropertyInterface::class)) {
                 $configure
                     ->setClassName(className: $configure->getDataType())
                     ->setDataType(dataType: 'property')
                     ->setFieldRoot(fieldRoot: $configure->getField());
             }
-            if (is_subclass_of(object_or_class: $configure->getDataType(), class: HydratorEntityAttachmentInterface::class)) {
+            if (is_subclass_of(object_or_class: $configure->getDataType(), class: BxEmHydratorEntityAttachmentInterface::class)) {
                 $configure
                     ->setClassName(className: $configure->getDataType())
                     ->setDataType(dataType: 'attachment')
@@ -145,22 +145,22 @@ class BitrixElementHydrator
         return $configure;
     }
 
-    private static function int(Configure $configure): int
+    private static function int(BxEmHydratorConfigure $configure): int
     {
         return (int)$configure->getValue();
     }
 
-    private static function string(Configure $configure): string
+    private static function string(BxEmHydratorConfigure $configure): string
     {
         return $configure->getValue();
     }
 
-    private static function bool(Configure $configure): bool
+    private static function bool(BxEmHydratorConfigure $configure): bool
     {
         return in_array(needle: $configure->getValue(), haystack: ['Y', '1']);
     }
 
-    private static function enum(Configure $configure): \BackedEnum
+    private static function enum(BxEmHydratorConfigure $configure): \BackedEnum
     {
         return $configure->getClassName()::from($configure->getValue());
     }
@@ -169,12 +169,12 @@ class BitrixElementHydrator
      * @throws DateMalformedStringException
      * @throws ReflectionException
      */
-    private static function attachment(Configure $configure): object
+    private static function attachment(BxEmHydratorConfigure $configure): object
     {
         $className = $configure->getClassName();
         $class = new $className;
 
-        if ($class instanceof HydratorFileAttachment) {
+        if ($class instanceof BxEmBxEmHydratorFileAttachment) {
             $fields = ['ID' => $configure->getValue()];
 
             if (Rule::dataRelated(configure: $configure)) {
@@ -184,7 +184,7 @@ class BitrixElementHydrator
             self::handler(fields: $fields, model: $class, rules: $configure->getRules());
         }
 
-        if ($class instanceof HydratorSectionAttachment) {
+        if ($class instanceof BxEmBxEmHydratorSectionAttachment) {
             $fields = ['ID' => $configure->getValue()];
 
             if (Rule::dataRelated(configure: $configure)) {
@@ -206,7 +206,7 @@ class BitrixElementHydrator
      * @throws DateMalformedStringException
      * @throws ReflectionException
      */
-    private static function array(Configure $configure): array
+    private static function array(BxEmHydratorConfigure $configure): array
     {
         $values = $configure->getValue();
         $dataTypeInArray = $configure->getDataTypeInArray();
@@ -266,7 +266,7 @@ class BitrixElementHydrator
      * @throws ReflectionException
      * @throws DateMalformedStringException
      */
-    private static function property(Configure $configure): object
+    private static function property(BxEmHydratorConfigure $configure): object
     {
         $className = $configure->getClassName();
         $class = new $className;
@@ -286,7 +286,7 @@ class BitrixElementHydrator
      * @throws DateMalformedStringException
      * @throws ReflectionException
      */
-    private static function entity(Configure $configure): object
+    private static function entity(BxEmHydratorConfigure $configure): object
     {
         if (Rule::dataRelated(configure: $configure)) {
             $item = \CIBlockElement::GetByID(ID: $configure->getValue())->GetNextElement();

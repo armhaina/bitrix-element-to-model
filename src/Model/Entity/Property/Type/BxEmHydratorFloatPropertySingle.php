@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace BitrixElementHydrator\Model\Entity\Property\Type;
 
-use BitrixElementHydrator\Model\Entity\Property\AbstractHydratorPropertySingle;
+use BitrixElementHydrator\Model\Entity\Property\AbstractBxEmHydratorPropertySingle;
 
-class HydratorFloatPropertySingle extends AbstractHydratorPropertySingle
+class BxEmHydratorFloatPropertySingle extends AbstractBxEmHydratorPropertySingle
 {
     protected float $value;
 

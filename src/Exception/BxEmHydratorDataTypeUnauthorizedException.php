@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace BitrixElementHydrator\Exception;
 
-class HydratorDataTypeUnauthorizedException extends \InvalidArgumentException
+class BxEmHydratorDataTypeUnauthorizedException extends \InvalidArgumentException
 {
     public function __construct(string $type, array $acceptableTypes)
     {

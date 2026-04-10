@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace BitrixElementHydrator\Model\Entity\Property\Type;
 
-use BitrixElementHydrator\Attribute\HydratorDataTypeInArray;
-use BitrixElementHydrator\Model\Entity\Property\AbstractHydratorPropertyList;
+use BitrixElementHydrator\Attribute\BxEmHydratorDataTypeInArray;
+use BitrixElementHydrator\Model\Entity\Property\AbstractBxEmHydratorPropertyList;
 
-class HydratorFloatPropertyList extends AbstractHydratorPropertyList
+class BxEmHydratorStringPropertyList extends AbstractBxEmHydratorPropertyList
 {
-    #[HydratorDataTypeInArray(typeOrClassName: 'float')]
+    #[BxEmHydratorDataTypeInArray(typeOrClassName: 'string')]
     protected array $value;
 
     public function getValue(): array

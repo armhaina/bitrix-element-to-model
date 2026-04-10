@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace BitrixElementHydrator\Exception;
 
-class HydratorAttributeNotFoundException extends \RuntimeException
+class BxEmHydratorAttributeNotFoundException extends \RuntimeException
 {
     public function __construct(string $attribute)
     {

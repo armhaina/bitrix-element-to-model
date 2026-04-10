@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace BitrixElementHydrator\Model\Entity\Attachment;
 
-use BitrixElementHydrator\Contract\HydratorEntityAttachmentInterface;
+use BitrixElementHydrator\Contract\BxEmHydratorEntityAttachmentInterface;
 
-class HydratorSectionAttachment implements HydratorEntityAttachmentInterface
+class BxEmBxEmHydratorSectionAttachment implements BxEmHydratorEntityAttachmentInterface
 {
     protected int $id;
     protected ?string $timestampX = null;

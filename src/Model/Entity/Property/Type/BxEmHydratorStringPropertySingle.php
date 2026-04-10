@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace BitrixElementHydrator\Model\Entity\Property\Type;
 
-use BitrixElementHydrator\Model\Entity\Property\AbstractHydratorPropertySingle;
+use BitrixElementHydrator\Model\Entity\Property\AbstractBxEmHydratorPropertySingle;
 
-class HydratorStringPropertySingle extends AbstractHydratorPropertySingle
+class BxEmHydratorStringPropertySingle extends AbstractBxEmHydratorPropertySingle
 {
     protected string $value;
 

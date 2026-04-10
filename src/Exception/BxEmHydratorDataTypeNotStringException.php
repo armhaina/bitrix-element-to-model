@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace BitrixElementHydrator\Exception;
 
-class HydratorValueNotRuleException extends \InvalidArgumentException
+class BxEmHydratorDataTypeNotStringException extends \InvalidArgumentException
 {
     public function __construct(mixed $value)
     {
         $message = sprintf(
-            'Переданный значение: %s не является правилом (моделью).',
+            'Переданный тип данных: %s не является строкой.',
             $value,
         );
 
