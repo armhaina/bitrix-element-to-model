@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace BxEmHydrator\Model\Entity;
 
 use BxEmHydrator\Contract\BxEmHydratorEntityInterface;
-use BxEmHydrator\Model\Entity\Attachment\BxEmBxEmHydratorFileAttachment;
-use BxEmHydrator\Model\Entity\Attachment\BxEmBxEmHydratorSectionAttachment;
+use BxEmHydrator\Model\Entity\Attachment\BxEmHydratorFileAttachment;
+use BxEmHydrator\Model\Entity\Attachment\BxEmHydratorSectionAttachment;
 
 abstract class AbstractBxEmHydratorEntity implements BxEmHydratorEntityInterface
 {
@@ -18,12 +18,12 @@ abstract class AbstractBxEmHydratorEntity implements BxEmHydratorEntityInterface
     protected ?string $dateCreate = null;
     protected ?int $dateCreateUnix = null;
     protected ?int $iblockId = null;
-    protected ?BxEmBxEmHydratorSectionAttachment $iblockSectionId = null;
+    protected ?BxEmHydratorSectionAttachment $iblockSectionId = null;
     protected ?bool $active = null;
-    protected ?BxEmBxEmHydratorFileAttachment $previewPicture = null;
+    protected ?BxEmHydratorFileAttachment $previewPicture = null;
     protected ?string $previewText = null;
     protected ?string $previewTextType = null;
-    protected ?BxEmBxEmHydratorFileAttachment $detailPicture = null;
+    protected ?BxEmHydratorFileAttachment $detailPicture = null;
     protected ?string $detailText = null;
     protected ?string $detailTextType = null;
     protected ?string $searchableContent = null;
@@ -152,12 +152,12 @@ abstract class AbstractBxEmHydratorEntity implements BxEmHydratorEntityInterface
         return $this;
     }
 
-    public function getIblockSectionId(): ?BxEmBxEmHydratorSectionAttachment
+    public function getIblockSectionId(): ?BxEmHydratorSectionAttachment
     {
         return $this->iblockSectionId;
     }
 
-    public function setIblockSectionId(BxEmBxEmHydratorSectionAttachment $iblockSectionId): self
+    public function setIblockSectionId(BxEmHydratorSectionAttachment $iblockSectionId): self
     {
         $this->iblockSectionId = $iblockSectionId;
 
@@ -176,12 +176,12 @@ abstract class AbstractBxEmHydratorEntity implements BxEmHydratorEntityInterface
         return $this;
     }
 
-    public function getPreviewPicture(): ?BxEmBxEmHydratorFileAttachment
+    public function getPreviewPicture(): ?BxEmHydratorFileAttachment
     {
         return $this->previewPicture;
     }
 
-    public function setPreviewPicture(BxEmBxEmHydratorFileAttachment $previewPicture): self
+    public function setPreviewPicture(BxEmHydratorFileAttachment $previewPicture): self
     {
         $this->previewPicture = $previewPicture;
 
@@ -212,12 +212,12 @@ abstract class AbstractBxEmHydratorEntity implements BxEmHydratorEntityInterface
         return $this;
     }
 
-    public function getDetailPicture(): ?BxEmBxEmHydratorFileAttachment
+    public function getDetailPicture(): ?BxEmHydratorFileAttachment
     {
         return $this->detailPicture;
     }
 
-    public function setDetailPicture(BxEmBxEmHydratorFileAttachment $detailPicture): self
+    public function setDetailPicture(BxEmHydratorFileAttachment $detailPicture): self
     {
         $this->detailPicture = $detailPicture;
 

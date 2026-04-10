@@ -6,7 +6,7 @@ namespace BxEmHydrator\Model\Entity\Attachment;
 
 use BxEmHydrator\Contract\BxEmHydratorEntityAttachmentInterface;
 
-class BxEmBxEmHydratorFileAttachment implements BxEmHydratorEntityAttachmentInterface
+class BxEmHydratorFileAttachment implements BxEmHydratorEntityAttachmentInterface
 {
     protected int $id;
     protected ?string $timestampX = null;

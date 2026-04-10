@@ -16,8 +16,8 @@ use BxEmHydrator\Handler\Rule;
 use BxEmHydrator\Handler\Str;
 use BxEmHydrator\Handler\Validation;
 use BxEmHydrator\Model\BxEmHydratorConfigure;
-use BxEmHydrator\Model\Entity\Attachment\BxEmBxEmHydratorFileAttachment;
-use BxEmHydrator\Model\Entity\Attachment\BxEmBxEmHydratorSectionAttachment;
+use BxEmHydrator\Model\Entity\Attachment\BxEmHydratorFileAttachment;
+use BxEmHydrator\Model\Entity\Attachment\BxEmHydratorSectionAttachment;
 use DateMalformedStringException;
 use ReflectionException;
 
@@ -174,7 +174,7 @@ class BxEmHydrator
         $className = $configure->getClassName();
         $class = new $className;
 
-        if ($class instanceof BxEmBxEmHydratorFileAttachment) {
+        if ($class instanceof BxEmHydratorFileAttachment) {
             $fields = ['ID' => $configure->getValue()];
 
             if (Rule::dataRelated(configure: $configure)) {
@@ -184,7 +184,7 @@ class BxEmHydrator
             self::handler(fields: $fields, model: $class, rules: $configure->getRules());
         }
 
-        if ($class instanceof BxEmBxEmHydratorSectionAttachment) {
+        if ($class instanceof BxEmHydratorSectionAttachment) {
             $fields = ['ID' => $configure->getValue()];
 
             if (Rule::dataRelated(configure: $configure)) {
