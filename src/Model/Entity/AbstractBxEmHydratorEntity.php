@@ -18,12 +18,9 @@ abstract class AbstractBxEmHydratorEntity implements BxEmHydratorEntityInterface
     protected ?string $dateCreate = null;
     protected ?int $dateCreateUnix = null;
     protected ?int $iblockId = null;
-    protected ?BxEmHydratorSectionAttachment $iblockSectionId = null;
     protected ?bool $active = null;
-    protected ?BxEmHydratorFileAttachment $previewPicture = null;
     protected ?string $previewText = null;
     protected ?string $previewTextType = null;
-    protected ?BxEmHydratorFileAttachment $detailPicture = null;
     protected ?string $detailText = null;
     protected ?string $detailTextType = null;
     protected ?string $searchableContent = null;
@@ -152,18 +149,6 @@ abstract class AbstractBxEmHydratorEntity implements BxEmHydratorEntityInterface
         return $this;
     }
 
-    public function getIblockSectionId(): ?BxEmHydratorSectionAttachment
-    {
-        return $this->iblockSectionId;
-    }
-
-    public function setIblockSectionId(BxEmHydratorSectionAttachment $iblockSectionId): self
-    {
-        $this->iblockSectionId = $iblockSectionId;
-
-        return $this;
-    }
-
     public function getActive(): ?bool
     {
         return $this->active;
@@ -172,18 +157,6 @@ abstract class AbstractBxEmHydratorEntity implements BxEmHydratorEntityInterface
     public function setActive(bool $active): self
     {
         $this->active = $active;
-
-        return $this;
-    }
-
-    public function getPreviewPicture(): ?BxEmHydratorFileAttachment
-    {
-        return $this->previewPicture;
-    }
-
-    public function setPreviewPicture(BxEmHydratorFileAttachment $previewPicture): self
-    {
-        $this->previewPicture = $previewPicture;
 
         return $this;
     }
@@ -208,18 +181,6 @@ abstract class AbstractBxEmHydratorEntity implements BxEmHydratorEntityInterface
     public function setPreviewTextType(string $previewTextType): self
     {
         $this->previewTextType = $previewTextType;
-
-        return $this;
-    }
-
-    public function getDetailPicture(): ?BxEmHydratorFileAttachment
-    {
-        return $this->detailPicture;
-    }
-
-    public function setDetailPicture(BxEmHydratorFileAttachment $detailPicture): self
-    {
-        $this->detailPicture = $detailPicture;
 
         return $this;
     }

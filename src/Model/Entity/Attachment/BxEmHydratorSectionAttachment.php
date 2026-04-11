@@ -11,7 +11,6 @@ class BxEmHydratorSectionAttachment implements BxEmHydratorEntityAttachmentInter
     protected int $id;
     protected ?string $timestampX = null;
     protected ?string $dateCreate = null;
-    protected ?self $iblockSectionId = null;
     protected ?int $iblockId = null;
     protected ?bool $active = null;
     protected ?bool $globalActive = null;
@@ -67,18 +66,6 @@ class BxEmHydratorSectionAttachment implements BxEmHydratorEntityAttachmentInter
     public function setDateCreate(string $dateCreate): self
     {
         $this->dateCreate = $dateCreate;
-
-        return $this;
-    }
-
-    public function getIblockSectionId(): ?self
-    {
-        return $this->iblockSectionId;
-    }
-
-    public function setIblockSectionId(self $iblockSectionId): self
-    {
-        $this->iblockSectionId = $iblockSectionId;
 
         return $this;
     }
