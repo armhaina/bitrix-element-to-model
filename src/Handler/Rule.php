@@ -20,18 +20,18 @@ readonly class Rule
             }
 
             if ($configure->getDataType() === 'array' && class_exists(class: $configure->getDataTypeInArray())) {
-                return in_array($configure->getFieldRoot(), $rule->getFields());
+                return in_array($configure->getField(), $rule->getFields());
             }
 
             $name = mb_strtoupper(string: Rfl::name(objectOrClass: $configure->getClassNameRoot()));
 
             // Проверяем что в правилах есть поле связанного запроса для любой сущности
-            if (in_array($configure->getFieldRoot(), $rule->getFields())) {
+            if (in_array(needle: $configure->getField(), haystack: $rule->getFields())) {
                 return true;
             }
 
             // Проверяем что в правилах есть поле связанного запроса для корневой сущности
-            if (in_array($name . '.' . $configure->getFieldRoot(), $rule->getFields())) {
+            if (in_array(needle: $name . '.' . $configure->getField(), haystack: $rule->getFields())) {
                 return true;
             }
 

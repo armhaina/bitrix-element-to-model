@@ -81,6 +81,11 @@ class BxEmHydrator
                 $configure->setClassNameRoot(classNameRoot: $classNameRoot);
             }
 
+            // Если поля является свойством (PROPERTY_) битрикса, то берем только value
+            if (!empty($configure->getValue()['PROPERTY_VALUE_ID'])) {
+                $configure->setValue(value: $configure->getValue()['VALUE']);
+            }
+
             $configure = self::configure(configure: $configure, model: $model);
 
             match ($configure->getDataType()) {
@@ -90,7 +95,6 @@ class BxEmHydrator
                 'enum' => $model->{$method}(self::enum(configure: $configure)),
                 'attachment' => $model->{$method}(self::attachment(configure: $configure)),
                 'array' => $model->{$method}(self::array(configure: $configure)),
-                'property' => $model->{$method}(self::property(configure: $configure)),
                 'entity' => $model->{$method}(self::entity(configure: $configure)),
             };
         }
@@ -128,13 +132,10 @@ class BxEmHydrator
                     ->setClassName(className: $configure->getDataType())
                     ->setDataType(dataType: 'entity');
             }
-            if (is_subclass_of(object_or_class: $configure->getDataType(), class: BxEmHydratorEntityPropertyInterface::class)) {
-                $configure
-                    ->setClassName(className: $configure->getDataType())
-                    ->setDataType(dataType: 'property')
-                    ->setFieldRoot(fieldRoot: $configure->getField());
-            }
-            if (is_subclass_of(object_or_class: $configure->getDataType(), class: BxEmHydratorEntityAttachmentInterface::class)) {
+            if (is_subclass_of(
+                object_or_class: $configure->getDataType(),
+                class: BxEmHydratorEntityAttachmentInterface::class
+            )) {
                 $configure
                     ->setClassName(className: $configure->getDataType())
                     ->setDataType(dataType: 'attachment')
@@ -260,26 +261,6 @@ class BxEmHydrator
         }
 
         return $values;
-    }
-
-    /**
-     * @throws ReflectionException
-     * @throws DateMalformedStringException
-     */
-    private static function property(BxEmHydratorConfigure $configure): object
-    {
-        $className = $configure->getClassName();
-        $class = new $className;
-
-        self::handler(
-            fields: $configure->getValue(),
-            model: $class,
-            rules: $configure->getRules(),
-            fieldRoot: $configure->getFieldRoot(),
-            classNameRoot: $configure->getClassNameRoot()
-        );
-
-        return $class;
     }
 
     /**
