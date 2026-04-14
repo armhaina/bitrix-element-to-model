@@ -1,7 +1,7 @@
 {
-  "name": "armhaina/bitrix-element-hydrator",
+  "name": "armhaina/bitrix-hydrator",
   "type": "library",
-  "description": "Hydrator of the Bitrix element in the entity",
+  "description": "Hydrator of the Bitrix object in the entity",
   "keywords": [
     "bitrix",
     "element",
