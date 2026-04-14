@@ -1,0 +1,18 @@
+<?php
+
+declare(strict_types=1);
+
+namespace BxEmHydrator\Element\Exception;
+
+class BxEmHydratorDataTypeNotStringException extends \InvalidArgumentException
+{
+    public function __construct(mixed $value)
+    {
+        $message = sprintf(
+            'Переданный тип данных: %s не является строкой.',
+            $value,
+        );
+
+        parent::__construct(message: $message);
+    }
+}
