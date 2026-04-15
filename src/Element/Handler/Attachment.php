@@ -12,7 +12,7 @@ readonly class Attachment
     {
         $fields = \CFile::GetByID(fileId: $id)->GetNext();
         $fields = Clr::fields(fields: $fields);
-        $fields['EXTENSION'] = GetFileExtension(path: $fields['SRC']);
+        $fields['EXTENSION'] = \GetFileExtension(path: $fields['SRC']);
 
         return $fields;
     }
