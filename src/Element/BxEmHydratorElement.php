@@ -189,24 +189,19 @@ class BxEmHydratorElement
      * @throws DateMalformedStringException
      * @throws ReflectionException
      */
-    private static function attachment(BxEmHydratorConfigure $configure): object
+    private static function attachment(BxEmHydratorConfigure $configure): ?object
     {
         $className = $configure->getClassName();
         $class = new $className;
 
         if ($class instanceof BxEmHydratorFileAttachment) {
-            $fields = ['ID' => $configure->getValue()];
-
             if (Rule::dataRelated(configure: $configure)) {
                 $fields = Attachment::file(id: (int)$configure->getValue());
+                self::handler(fields: $fields, model: $class, rules: $configure->getRules());
             }
-
-            self::handler(fields: $fields, model: $class, rules: $configure->getRules());
         }
 
         if ($class instanceof BxEmHydratorSectionAttachment) {
-            $fields = ['ID' => $configure->getValue()];
-
             if (Rule::dataRelated(configure: $configure)) {
                 $item = Attachment::section(id: (int)$configure->getValue());
 
@@ -217,16 +212,9 @@ class BxEmHydratorElement
                     isSection: true
                 );
             }
-
-            self::handler(
-                fields: $fields,
-                model: $class,
-                rules: $configure->getRules(),
-                classNameRoot: $configure->getClassNameRoot()
-            );
         }
 
-        return $class;
+        return null;
     }
 
     /**
@@ -293,17 +281,14 @@ class BxEmHydratorElement
      * @throws DateMalformedStringException
      * @throws ReflectionException
      */
-    private static function entity(BxEmHydratorConfigure $configure): object
+    private static function entity(BxEmHydratorConfigure $configure): ?object
     {
         if (Rule::dataRelated(configure: $configure)) {
             $item = \CIBlockElement::GetByID(ID: $configure->getValue())->GetNextElement();
 
             return self::exec(item: $item, className: $configure->getClassName(), rules: $configure->getRules());
-        } else {
-            $item = ['ID' => $configure->getValue()];
-            $class = $configure->getClassName();
-
-            return self::handler(fields: $item, model: new $class, rules: $configure->getRules());
         }
+
+        return null;
     }
 }

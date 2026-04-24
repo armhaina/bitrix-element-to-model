@@ -26,6 +26,7 @@ class BxEmHydratorSectionAttachment implements BxEmHydratorEntityAttachmentInter
     protected ?string $sectionPageUrl = null;
     protected ?string $iblockTypeId = null;
     protected ?string $iblockCode = null;
+    protected ?int $elementCnt = null;
 
     public function getId(): int
     {
@@ -247,6 +248,18 @@ class BxEmHydratorSectionAttachment implements BxEmHydratorEntityAttachmentInter
     public function setIblockCode(string $iblockCode): self
     {
         $this->iblockCode = $iblockCode;
+
+        return $this;
+    }
+
+    public function getElementCnt(): ?int
+    {
+        return $this->elementCnt;
+    }
+
+    public function setElementCnt(string $elementCnt): self
+    {
+        $this->elementCnt = $elementCnt;
 
         return $this;
     }
