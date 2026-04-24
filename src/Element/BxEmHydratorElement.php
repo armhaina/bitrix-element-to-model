@@ -197,7 +197,8 @@ class BxEmHydratorElement
         if ($class instanceof BxEmHydratorFileAttachment) {
             if (Rule::dataRelated(configure: $configure)) {
                 $fields = Attachment::file(id: (int)$configure->getValue());
-                self::handler(fields: $fields, model: $class, rules: $configure->getRules());
+
+                return self::handler(fields: $fields, model: $class, rules: $configure->getRules());
             }
         }
 
