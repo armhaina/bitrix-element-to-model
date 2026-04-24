@@ -20,8 +20,9 @@ readonly class Attachment
         $section = \CIBlockSection::GetByID(ID: $id)->Fetch();
 
         return \CIBlockSection::GetList(
-            arFilter: ['ID' => $id, 'IBLOCK_ID' => $section['IBLOCK_ID']],
-            arSelect: ['*', 'UF_*']
+            arFilter: ['ID' => $id, 'IBLOCK_ID' => $section['IBLOCK_ID'], 'CNT_ACTIVE' => 'Y'],
+            arSelect: ['*', 'UF_*'],
+            bIncCnt: true
         )->GetNextElement();
     }
 }
